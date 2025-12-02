@@ -1,0 +1,27 @@
+pipeline { 
+    agent any 
+    stages { 
+        stage('Checkout') { 
+            steps { 
+                echo 'Checking out code from main branch...' 
+            } 
+        } 
+        stage('Compile Java') { 
+            steps { 
+                echo 'Compiling Java program...' 
+                bat 'javac src/Main.java' 
+            } 
+        } 
+        stage('Run Java') { 
+            steps { 
+                echo 'Running Java program...' 
+                bat 'java -cp src Main' 
+            } 
+        } 
+    } 
+    post { 
+        always { 
+            echo 'Java pipeline completed!' 
+        } 
+    } 
+} 

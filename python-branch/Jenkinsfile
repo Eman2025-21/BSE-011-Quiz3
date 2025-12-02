@@ -1,0 +1,21 @@
+pipeline { 
+    agent any 
+    stages { 
+        stage('Checkout') { 
+            steps { 
+                echo 'Checking out code from python-branch...' 
+            } 
+        } 
+        stage('Run Python') { 
+            steps { 
+                echo 'Running Python program...' 
+                bat 'python src/main.py' 
+            } 
+        } 
+    } 
+    post { 
+        always { 
+            echo 'Python pipeline completed!' 
+        } 
+    } 
+} 
