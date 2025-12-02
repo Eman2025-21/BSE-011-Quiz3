@@ -9,7 +9,7 @@ pipeline {
         stage('Compile Java') { 
             steps { 
                 echo 'Compiling Java program...' 
-                bat 'javac src/Main.java' 
+                bat 'javac -source 1.8 -target 1.8 src/Main.java' 
             } 
         } 
         stage('Run Java') { 
